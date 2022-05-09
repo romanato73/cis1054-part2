@@ -2,9 +2,15 @@
 
 class Database
 {
+    /**
+     * @var array Current table.
+     */
     private static array $table = [];
 
-    private array $result = [];
+    /**
+     * @var array Current query.
+     */
+    private array $query = [];
 
     /**
      * Load the table (file) into variable.
@@ -31,7 +37,7 @@ class Database
     {
         foreach (self::$table as $row) {
             if ($this->compare($row->$column, $value, $operator)) {
-                $this->result[] = $row;
+                $this->query[] = $row;
             }
         }
 
@@ -49,8 +55,8 @@ class Database
     public function get(int $id = null): mixed
     {
         if (is_null($id)) {
-            if (!empty($this->result)) {
-                return $this->result;
+            if (!empty($this->query)) {
+                return $this->query;
             }
 
             return self::$table;
