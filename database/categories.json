@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Breakfast",
+        "description": ""
+    },
+    {
+        "id": 2,
+        "name": "A-La-Carte",
+        "description": ""
+    },
+    {
+        "id": 3,
+        "name": "Soups",
+        "description": ""
+    },
+    {
+        "id": 4,
+        "name": "Main course",
+        "description": ""
+    },
+    {
+        "id": 5,
+        "name": "Sushi",
+        "description": ""
+    },
+    {
+        "id": 6,
+        "name": "Sashimi",
+        "description": "Served with mixed leaves and ginger."
+    },
+    {
+        "id": 7,
+        "name": "Dessert",
+        "description": ""
+    },
+    {
+        "id": 8,
+        "name": "Ice cream",
+        "description": ""
+    }
+]
