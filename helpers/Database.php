@@ -10,7 +10,12 @@ class Database
     /**
      * @var array Current query.
      */
-    private array $query = [];
+    private static array $query = [];
+
+    /**
+     * @var array Relationship tables.
+     */
+    private static array $relationship = [];
 
     /**
      * Load the table (file) into variable.
@@ -20,7 +25,9 @@ class Database
      */
     public static function table(string $name): static
     {
-        self::$table = json_decode(file_get_contents(__DIR__ . "/../database/$name.json"));
+        self::$table = self::loadFile($name);
+
+        self::$query = self::$table;
 
         return new static();
     }
@@ -35,10 +42,31 @@ class Database
      */
     public function where(string $column, string $operator, string $value): static
     {
-        foreach (self::$table as $row) {
-            if ($this->compare($row->$column, $value, $operator)) {
-                $this->query[] = $row;
+        foreach (self::$query as $key => $row) {
+            if (!$this->compare($row->$column, $value, $operator)) {
+                unset(self::$query[$key]);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add relationship to data.
+     *
+     * @param  string  $table
+     * @param  string  $foreignKey
+     * @return $this
+     */
+    public function with(string $table, string $foreignKey): static
+    {
+        $relationship = self::relationship($table);
+        $relationshipKey = substr($foreignKey, 0, strpos($foreignKey, '_id'));
+
+        foreach (self::$query as $key => $row) {
+            $temp = clone $row;
+            $temp->$relationshipKey = $relationship[$table][$row->$foreignKey];
+            self::$query[$key] = $temp;
         }
 
         return $this;
@@ -49,24 +77,28 @@ class Database
      * If id is not set return all rows
      * otherwise return one row with specific id.
      *
-     * @param int|null $id
+     * @param int|array|null $id
      * @return array|mixed|null
      */
-    public function get(int $id = null): mixed
+    public function get(int|array $id = null): mixed
     {
         if (is_null($id)) {
-            if (!empty($this->query)) {
-                return $this->query;
-            }
-
-            return self::$table;
+            return static::$query;
         }
 
-        foreach (self::$table as $row) {
+        if (is_array($id)) {
+            foreach (self::$query as $key => $row) {
+                if (!in_array($row->id, $id)) unset(self::$query[$key]);
+            }
+
+            return self::$query;
+        }
+
+        foreach (self::$query as $row) {
             if ($row->id === $id) return $row;
         }
 
-        die("Row with id '$id' does not exist.");
+        return null;
     }
 
     /**
@@ -79,16 +111,54 @@ class Database
      */
     private function compare($val1, $val2, $op): bool
     {
-        switch ($op) {
-            case '==': return $val1 == $val2;
-            case '>': return $val1 > $val2;
-            case '<': return $val1 < $val2;
-            case '>=': return $val1 >= $val2;
-            case '<=': return $val1 <= $val2;
-            case '!=': return $val1 != $val2;
-            case '===': return $val1 === $val2;
-            case '!==': return $val1 !== $val2;
-            default: return false;
+        return match ($op) {
+            '==' => $val1 == $val2,
+            '>' => $val1 > $val2,
+            '<' => $val1 < $val2,
+            '>=' => $val1 >= $val2,
+            '<=' => $val1 <= $val2,
+            '!=' => $val1 != $val2,
+            '===' => $val1 === $val2,
+            '!==' => $val1 !== $val2,
+            default => false,
+        };
+    }
+
+    /**
+     * Load relationship tables.
+     *
+     * @param  string  ...$tables
+     * @return array
+     */
+    private static function relationship(string ...$tables): array
+    {
+        foreach ($tables as $table) {
+            self::$relationship[$table] = [];
+
+            $temp = self::loadFile($table);
+
+            foreach ($temp as $row) {
+                self::$relationship[$table][$row->id] = $row;
+            }
         }
+
+        return self::$relationship;
+    }
+
+    /**
+     * Load database file.
+     *
+     * @param  string  $name
+     * @return mixed|void
+     */
+    private static function loadFile(string $name)
+    {
+        $path = __DIR__ . "/../database/$name.json";
+
+        if (!file_exists($path)) {
+            die("Error loading '$name' table.");
+        }
+
+        return json_decode(file_get_contents($path));
     }
 }
