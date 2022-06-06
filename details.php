@@ -1,8 +1,9 @@
 <?php
 
-include_once "helpers/Database.php";
+include_once "app/Database.php";
+require_once __DIR__."/app/bootstrap.php";
 
-$dishes = Database::table('dishes')->get();
+$dishes = App\Database::table('dishes')->get();
 $item = [];
 
 if (!isset($_GET['dish'])) {
@@ -20,10 +21,4 @@ if (empty($item)){
     exit("Not found");
 }
 
-?>
-
-<a href = "/menu" > Back</a><br>
-<?= $item->name ?> <br>
-<?= $item->price ?? 0 ?> <br>
-<?= $item->description ?> <br>
-<?= $item->options ?>
+echo $twig->render('details.twig', ['dish' => $item]);

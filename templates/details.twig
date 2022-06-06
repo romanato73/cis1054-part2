@@ -1,0 +1,18 @@
+{% extends "layouts/app.layout.twig" %}
+
+{% block main %}
+    <p><a href="../index.php">Back</a></p>
+
+    <h1>{{ dish.name }}</h1>
+
+    <ul>
+        <li>{{ dish.description }}</li>
+    </ul>
+    <p>Ingredients:</p>
+    <ul>
+        <li>{{ dish.options }}</li>
+    </ul>
+
+
+    <img src="{{ dish.image }}" alt="{{ dish.name }}" style="width:20%">
+{% endblock %}
