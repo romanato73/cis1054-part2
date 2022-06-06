@@ -1,0 +1,24 @@
+<html><head></head><body>{% extends "layout.html" %}
+
+{% block menu %}
+    {% include 'menu.html' %}
+{% endblock %}
+
+<p><a href="index.php">Back</a></p>
+
+{% block content %}
+    <h1>{{ dish.name }}</h1>
+    <p>{{ dish.price }}</p>
+
+    <ul>
+        <li>{{ dish.description }}</li>
+    </ul>
+    <p>Ingredients:</p>
+    <ul>
+        <li>{{ dish.options }}</li>
+    </ul>
+    
+
+    <img src="{{ dish.image }}" alt="{{ dish.name }}" style="width:20%">
+
+{% endblock %}</body></html>
