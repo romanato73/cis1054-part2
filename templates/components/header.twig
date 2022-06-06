@@ -1,0 +1,16 @@
+<header>
+    <nav class="navbar container">
+        <a href="/" class="navbar-logo">
+            <i class="fas fa-bowl-rice"></i>
+            Restaurant
+        </a>
+        <div class="nav">
+            {% for category in __menuCategories %}
+                <a href="/menu?category={{ category.id }}" class="nav-link">{{ category.name }}</a>
+            {% endfor %}
+            <a href="/favourites.php" class="nav-link">
+                <i class="far fa-heart"></i>
+            </a>
+        </div>
+    </nav>
+</header>

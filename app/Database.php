@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 class Database
 {
     /**
@@ -88,14 +90,18 @@ class Database
 
         if (is_array($id)) {
             foreach (self::$query as $key => $row) {
-                if (!in_array($row->id, $id)) unset(self::$query[$key]);
+                if (!in_array($row->id, $id, true)) {
+                    unset(self::$query[$key]);
+                }
             }
 
             return self::$query;
         }
 
         foreach (self::$query as $row) {
-            if ($row->id === $id) return $row;
+            if ($row->id === $id) {
+                return $row;
+            }
         }
 
         return null;
@@ -153,7 +159,7 @@ class Database
      */
     private static function loadFile(string $name)
     {
-        $path = __DIR__ . "/../database/$name.json";
+        $path = __DIR__."/../storage/database/$name.json";
 
         if (!file_exists($path)) {
             die("Error loading '$name' table.");

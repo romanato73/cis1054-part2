@@ -1,2 +1,13 @@
+# IDE Workspaces
 .idea
+.vscode
+
+# MacOS
 .DS_Store
+
+# Composer
+vendor
+composer.lock
+
+# Other
+storage/cache/templates/*

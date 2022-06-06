@@ -1,0 +1,44 @@
+{% extends "layouts/app.layout.twig" %}
+
+{% block main %}
+    {% if favourites|length > 0 %}
+        {% for favourite in favourites %}
+            <div>
+                <div class="category">
+                    <h1 class="category-title">{{ favourite.category.name }}</h1>
+                    {% if favourite.category.description %}
+                        <div class="category-description">{{ favourite.category.description }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="dishes">
+                    {% for dish in favourite.dishes %}
+                        <a href="/detail.php?dish={{ dish.id }}" class="dish dish-link">
+                            <div class="dish-header">
+                                <div class="dish-name">{{ dish.name }}</div>
+                            </div>
+                            <div class="dish-body">
+                                <div class="dish-description">
+                                    {{
+                                    dish.description|length > 30
+                                    ? dish.description|slice(0, 30)|trim() ~ "..."
+                                    : dish.description
+                                    }}
+                                </div>
+                                <form method="post">
+                                    <button type="submit" class="dish-favorite fav">
+                                        <i class="fas fa-heart fa-lg"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert">
+            You do not have any favourite dishes.
+        </div>
+    {% endif %}
+{% endblock %}
