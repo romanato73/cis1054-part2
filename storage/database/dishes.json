@@ -364,8 +364,8 @@
         "category_id": 8,
         "category": "Ice cream",
         "name": "Strawberry",
-        "description": "Cone, add waffle, cup",
-        "options": "",
+        "description": "",
+        "options": "Cone, add waffle, cup",
         "image":  "/assets/images/Strawberry.jpg"
     }
 ]
