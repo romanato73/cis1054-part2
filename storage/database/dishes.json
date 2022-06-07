@@ -105,7 +105,7 @@
         "name": "Dumpling Soup",
         "description": "Traditional Japanese dumplings filled with beef and chives served in a chicken stock , topped with green chopped onions.",
         "options": "",
-        "image":  "/assets/images/Dumpling.jpg"
+        "image":  "/assets/images/DumplingSoup.jpg"
     },
     {
         "id": 13,
@@ -132,7 +132,7 @@
         "name": "Japanese BBQ Spareribs",
         "description": "BBQ pork spareribs grilled in Japanese style, marinated in Japanese BBQ sauce. Served with mixed vegetables and apple honey sauce.",
         "options": "",
-        "image":  "/assets/images/BBQRibs.jgp"
+        "image":  "/assets/images/BBQRibs.jpg"
     },
     {
         "id": 16,

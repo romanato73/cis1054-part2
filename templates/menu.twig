@@ -1,20 +1,20 @@
 {% extends "layouts/app.layout.twig" %}
 
 {% block main %}
-    {% for dish in food %}
+    {% for item in food %}
         <div>
             <div class="category">
-                <h1 class="category-title">{{ dish.category }}</h1>
-                {% endif %}
+                <h1 class="category-title">{{ item.category.name }}</h1>
             </div>
 
             <div class="dishes">
-                {% for dish in dishes %}
+                {% for dish in item.dishes %}
                     <a href="/details.php?dish={{ dish.id }}" class="dish dish-link">
                         <div class="dish-header">
                             <div class="dish-name">{{ dish.name }}</div>
                         </div>
                         <div class="dish-body">
+                            <img src="{{ dish.image }}" alt="{{ dish.name }}" style="width: 80px">
                             <form method="post">
                                 <button type="submit" class="dish-favorite fav">
                                     <i class="fas fa-heart fa-lg"></i>

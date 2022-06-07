@@ -10,20 +10,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $food = [];
 
 if (isset($_GET['category'])) {
-    $list = App\Database::table('dishes')->get();
-
-    foreach ($list as $dish) {
-        if (strtolower($dish->category) == strtolower($_GET['category'])) {
-            $food = $list;
+    foreach (App\Database::table('categories')->get() as $category) {
+        if ($category->name !== $_GET['category']) {
+            continue;
         }
+
+        $dishes = \App\Database::table('dishes')
+            ->where('category_id', '==', $category->id)
+            ->get();
+
+        $food[] = [
+            'category' => $category,
+            'dishes' => $dishes,
+        ];
     }
-
-    if (empty($food)) {
-        exit("Not found");
-    }
-
-    echo $twig->render('menu.twig', ['food' => $food]);
-
 } else {
-    exit('Not found');
+    foreach (App\Database::table('categories')->get() as $category) {
+        $dishes = \App\Database::table('dishes')
+            ->where('category_id', '==', $category->id)
+            ->get();
+
+        $food[] = [
+            'category' => $category,
+            'dishes' => $dishes,
+        ];
+    }
 }
+echo $twig->render('menu.twig', ['food' => $food]);

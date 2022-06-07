@@ -7,7 +7,7 @@ $dishes = App\Database::table('dishes')->get();
 $item = [];
 
 if (!isset($_GET['dish'])) {
-    exit("Not found");
+    exit($twig->render('404.twig'));
 }
 
 foreach ($dishes as $dish) {
@@ -18,7 +18,7 @@ foreach ($dishes as $dish) {
 }
 
 if (empty($item)){
-    exit("Not found");
+    exit($twig->render('404.twig'));
 }
 
 echo $twig->render('details.twig', ['dish' => $item]);

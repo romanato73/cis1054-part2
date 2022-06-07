@@ -14,7 +14,7 @@ $twigLoader = new \Twig\Loader\FilesystemLoader([
 // Initialize twig environment
 $twig = new \Twig\Environment($twigLoader, [
     'debug' => true,
-//    'cache' => __DIR__.'/../storage/cache/templates'
+//    'cache' => __DIR__.'/../storage/cache/templates',
 ]);
 
 // TODO: FOR DEBUGGING -> REMOVE
