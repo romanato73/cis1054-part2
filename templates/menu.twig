@@ -2,6 +2,28 @@
 
 {% block main %}
     {% for dish in food %}
-        {{ dish.category }}
+        <div>
+            <div class="category">
+                <h1 class="category-title">{{ dish.category }}</h1>
+                {% endif %}
+            </div>
+
+            <div class="dishes">
+                {% for dish in dishes %}
+                    <a href="/details.php?dish={{ dish.id }}" class="dish dish-link">
+                        <div class="dish-header">
+                            <div class="dish-name">{{ dish.name }}</div>
+                        </div>
+                        <div class="dish-body">
+                            <form method="post">
+                                <button type="submit" class="dish-favorite fav">
+                                    <i class="fas fa-heart fa-lg"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
     {% endfor %}
 {% endblock %}
