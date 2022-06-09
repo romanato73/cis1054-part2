@@ -8,7 +8,7 @@ $menu = [];
 
 if (isset($_GET['category'])) {
     foreach (Database::table('categories')->get() as $category) {
-        if (strtolower($category->name) !== strtolower($_GET['category'])) {
+        if ($category->id != $_GET['category']) {
             continue;
         }
 

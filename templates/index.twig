@@ -11,7 +11,7 @@
 
                 <div style="display:flex;gap: 1rem">
                     <a href="/menu.php" class="btn btn-primary">See the menu</a>
-                    <a href="#" class="btn btn-secondary">Book a table</a>
+                    <a href="#reservation" class="btn btn-secondary">Book a table</a>
                 </div>
             </div>
         </div>
@@ -21,17 +21,19 @@
         <img src="/assets/images/header.jpg" alt="Photo of dishes">
     </section>
 
-    <section class="container" style="margin: 5rem 0;">
-        <div class="page-title" style="text-align: center">Menu</div>
-        <div class="category-tabs">
-            <a href="/menu.php" class="category-tab">
-                All
-            </a>
-            {% for category in __menuCategories %}
-                <a href="/menu.php?category={{ category.name }}" class="category-tab">
-                    {{ category.name }}
+    <section style="padding: 5rem 0;">
+        <div class="container">
+            <div class="page-title" style="text-align: center">Menu</div>
+            <div class="category-tabs">
+                <a href="/menu.php" class="category-tab">
+                    All
                 </a>
-            {% endfor %}
+                {% for category in __menuCategories %}
+                    <a href="/menu.php?category={{ category.id }}" class="category-tab">
+                        {{ category.name }}
+                    </a>
+                {% endfor %}
+            </div>
         </div>
     </section>
 
@@ -40,7 +42,7 @@
             <div class="page-title" style="text-align: center">
                 About us
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem">
+            <div style="display:flex;justify-content:space-between;gap:1rem">
                 <div>
                     <img src="/assets/images/about_us.jpg" alt="About us dish">
                 </div>
@@ -55,6 +57,43 @@
 
     <section style="padding: 5rem 0;">
         <div class="container">
+            <div class="page-title" style="text-align:center;">
+                Key people
+            </div>
+
+            <div class="people">
+                <div class="people-item">
+                    <img src="/assets/images/ceo.jpeg" alt="CEO">
+                    <div>Amir Wild, CEO</div>
+                    <p style="text-align:center;">
+                        Amir Wild is a 35-year-old owner of the Restaurant who enjoys great food.
+                        He always wanted to open a restaurant of his own to serve people with
+                        the best dishes around the town.
+                    </p>
+                </div>
+                <div class="people-item">
+                    <img src="/assets/images/chief.jpeg" alt="Chief">
+                    <div>Laocoön Mason, Chef</div>
+                    <p style="text-align:center;">
+                        Laocoön Mason is the best chef in the country. He won several competitions,
+                        and also he is one of the best students of Gordon Ramsay.
+                    </p>
+                </div>
+                <div class="people-item">
+                    <img src="/assets/images/waiter.jpeg" alt="Waiter">
+                    <div>Mauri Paulauskas, Head Waiter</div>
+                    <p style="text-align:center;">
+                        He always come to work with a big smile. He is ambitious and hard-working.
+                        A lot of people like to talk that he is funny, you think that is a lie? Come
+                        and find out!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 5rem 0;" id="reservation">
+        <div class="container">
             <div class="row">
                 <div class="col">
                     <div class="page-title">Opening hours</div>
@@ -66,10 +105,10 @@
                 </div>
                 <div class="col">
                     <div class="page-title">Create reservation</div>
-                    <form method="post">
+                    <form method="post" action="/createreservation.php">
                         <div class="form-input">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Full Name" required>
+                            <label for="full_name">Name</label>
+                            <input type="text" id="full_name" name="full_name" placeholder="Full Name" required>
                         </div>
 
                         <div class="form-input">
@@ -83,8 +122,17 @@
                         </div>
 
                         <div class="form-input">
-                            <label for="date">Phone</label>
+                            <label for="date">Date</label>
                             <input type="date" id="date" name="date" required>
+                        </div>
+
+                        <div class="form-input">
+                            <label for="time">Time</label>
+                            <input type="time" id="time" name="time" required>
+                        </div>
+
+                        <div style="display:flex;justify-content:flex-end;margin-top:1rem;">
+                            <button type="submit" class="btn btn-primary">Send</button>
                         </div>
                     </form>
                 </div>

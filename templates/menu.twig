@@ -7,15 +7,15 @@
                 All
             </a>
             {% for category in __menuCategories %}
-                <a href="/menu.php?category={{ category.name }}"
-                   class="category-tab {{ category.name == __currentCategory ? "active" : "" }}">
+                <a href="/menu.php?category={{ category.id }}"
+                   class="category-tab {{ category.id == __currentCategory ? "active" : "" }}">
                     {{ category.name }}
                 </a>
             {% endfor %}
         </div>
 
         {% for item in menu %}
-            <div id="{{ item.category.name }}">
+            <div id="category-{{ item.category.id }}">
                 <div class="category">
                     <h1 class="category-title">{{ item.category.name }}</h1>
                 </div>
@@ -34,7 +34,7 @@
                                     <form action="/favourites.php" method="post" style="display:inline;">
                                         <input type="hidden" name="dish_id" value="{{ dish.id }}">
                                         <input type="hidden" name="from" value="menu">
-                                        <input type="hidden" name="category" value={{ item.category.name }}>
+                                        <input type="hidden" name="category" value={{ item.category.id }}>
                                         <button type="submit" class="favourite-btn {{ dish.id in __favourites ? "in-list" : "" }}">
                                             <i class="far fa-heart"></i>
                                         </button>

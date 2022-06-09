@@ -3,19 +3,28 @@
 require_once __DIR__ . "/app/bootstrap.php";
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    if (empty($_POST['email']) || empty($_POST['full_name'])) {
+    if (
+        empty($_POST['full_name']) ||
+        empty($_POST['email']) ||
+        empty($_POST['phone']) ||
+        empty($_POST['date']) ||
+        empty($_POST['time'])
+    ) {
         exit($twig->render('mail.twig', [
-            'title' => 'Favourite list could not be sent.',
-            'message' => 'Email and Name are required.'
+            'title' => 'Reservation failed.',
+            'message' => 'All fields are required.'
         ]));
     }
 
-    $email = clean_input($_POST['email']);
     $full_name = clean_input($_POST['full_name']);
+    $email = clean_input($_POST['email']);
+    $phone = clean_input($_POST['phone']);
+    $date = clean_input($_POST['date']);
+    $time = clean_input($_POST['time']);
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         exit($twig->render('mail.twig', [
-            'title' => 'Favourite list could not be sent.',
+            'title' => 'Reservation failed.',
             'message' => 'Invalid email.'
         ]));
     }
@@ -33,13 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     if($retVal === true) {
         exit($twig->render('mail.twig', [
-            'title' => 'Favourite list sent successfully!',
+            'title' => 'Reservation successfully created!',
             'message' => 'Check your email box.'
         ]));
     }
 
     exit($twig->render('mail.twig', [
-        'title' => 'Favourite list could not be sent.',
+        'title' => 'Reservation failed.',
         'message' => 'Unknown error occurred.'
     ]));
 }

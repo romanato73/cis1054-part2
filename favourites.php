@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     FavouriteList::storeOrRemove($_POST['dish_id']);
 
     if ($_POST['from'] === 'menu') {
-        header("Location: /menu.php#".$_POST['category']);
+        header("Location: /menu.php#category-".$_POST['category']);
     } else if ($_POST['from'] === 'details') {
         header("Location: /details.php?dish=".$_POST['dish_id']);
     } else {
