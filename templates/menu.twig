@@ -1,29 +1,57 @@
 {% extends "layouts/app.layout.twig" %}
 
 {% block main %}
-    {% for item in food %}
-        <div>
-            <div class="category">
-                <h1 class="category-title">{{ item.category.name }}</h1>
-            </div>
-
-            <div class="dishes">
-                {% for dish in item.dishes %}
-                    <a href="/details.php?dish={{ dish.id }}" class="dish dish-link">
-                        <div class="dish-header">
-                            <div class="dish-name">{{ dish.name }}</div>
-                        </div>
-                        <div class="dish-body">
-                            <img src="{{ dish.image }}" alt="{{ dish.name }}" style="width: 80px">
-                            <form method="post">
-                                <button type="submit" class="dish-favorite fav">
-                                    <i class="fas fa-heart fa-lg"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </a>
-                {% endfor %}
-            </div>
+    <div class="container">
+        <div class="category-tabs">
+            <a href="/menu.php" class="category-tab {{ __currentCategory == false ? "active" : "" }}">
+                All
+            </a>
+            {% for category in __menuCategories %}
+                <a href="/menu.php?category={{ category.name }}"
+                   class="category-tab {{ category.name == __currentCategory ? "active" : "" }}">
+                    {{ category.name }}
+                </a>
+            {% endfor %}
         </div>
-    {% endfor %}
+
+        {% for item in menu %}
+            <div id="{{ item.category.name }}">
+                <div class="category">
+                    <h1 class="category-title">{{ item.category.name }}</h1>
+                </div>
+
+                <div class="dishes">
+                    {% for dish in item.dishes %}
+                        <a href="/details.php?dish={{ dish.id }}" class="dish">
+                            <div class="dish-image">
+                                <img src="{{ dish.image }}" alt="{{ dish.name }}">
+                            </div>
+                            <div>
+                                <div class="dish-info">
+                                    <div class="dish-name">
+                                        {{ dish.name }}
+                                    </div>
+                                    <form action="/favourites.php" method="post" style="display:inline;">
+                                        <input type="hidden" name="dish_id" value="{{ dish.id }}">
+                                        <input type="hidden" name="from" value="menu">
+                                        <input type="hidden" name="category" value={{ item.category.name }}>
+                                        <button type="submit" class="favourite-btn {{ dish.id in __favourites ? "in-list" : "" }}">
+                                            <i class="far fa-heart"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="dish-description">
+                                    {{
+                                    dish.description|length > 30
+                                    ? dish.description|slice(0, 30)|trim() ~ "..."
+                                    : dish.description
+                                    }}
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

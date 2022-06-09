@@ -6,7 +6,7 @@
         "name": "Gohan",
         "description": "A bowl of plain steamed white (hakumai) or brown (genmai) rice.",
         "options": "",
-        "image": "/assets/images/Gohan.jpg"
+        "image": "/assets/images/dishes/Gohan.jpg"
     },
     {
         "id": 2,
@@ -15,7 +15,7 @@
         "name": "Natto Rice",
         "description": "Fermented soybean served over steamed white (hakumai) or brown (genmai) rice, seasoned with soy sauce.",
         "options": "Options: Katsubushi (dried bonito shavings), chopped green onions, karashi (spicy mustard), kizaminori (sliced dried and seasoned seaweed)",
-        "image": "/assets/images/NattoRice.jpg"
+        "image": "/assets/images/dishes/NattoRice.jpg"
     },
     {
         "id": 3,
@@ -24,7 +24,7 @@
         "name": "Okayu",
         "description": "Rice gruel served with toasted white sesame seeds, Japanese salted salmon, mitsuba (Japanese parsley), kizami nori (shredded nori seaweed) and umeboshi (Japanese pickled plums)",
         "options": "",
-        "image":  "/assets/images/Okayu.jpg"
+        "image":  "/assets/images/dishes/Okayu.jpg"
     },
     {
         "id": 4,
@@ -33,7 +33,7 @@
         "name": "Tamago Kake Gohan",
         "description": "Protein and carbohydrate rich bowl of rice topped with raw egg and soy seasoning.",
         "options": "",
-        "image":  "/assets/images/Tamago.jpg"
+        "image":  "/assets/images/dishes/Tamago.jpg"
     },
     {
         "id": 5,
@@ -42,7 +42,7 @@
         "name": "Yakizakana",
         "description": "Traditional salted and seared fish ([Aji] Dried horse mackerel or salmon)",
         "options": "",
-        "image":  "/assets/images/Yakizakana.jpg"
+        "image":  "/assets/images/dishes/Yakizakana.jpg"
     },
     {
         "id": 6,
@@ -51,7 +51,7 @@
         "name": "Tsukemono",
         "description": "An assortment of pickled vegetables served as a side dish gently complimenting a bowl of Gohan (rice).",
         "options": "Options: Daikon (Japanese Radish), cucumber, eggplant, cabbage, water lily root, umeboshi (plum), carrot and shallots.",
-        "image":  "/assets/images/Yakizakana.jpg"
+        "image":  "/assets/images/dishes/Yakizakana.jpg"
     },
     {
         "id": 7,
@@ -60,7 +60,7 @@
         "name": "Miso Shiru",
         "description": "Fermented soybean paste (miso) in dashi broth. Tofu, chopped green onion, wakame seaweed, Japanese mushrooms, and a seasonal ingredient (ask waiter)",
         "options": "Optional: deep-fried tofu (aburaage)",
-        "image":  "/assets/images/Miso.jpg"
+        "image":  "/assets/images/dishes/Miso.jpg"
     },
     {
         "id": 8,
@@ -69,7 +69,7 @@
         "name": "Chilli Prawn Ramen",
         "description": "Ramen noodles, beans and chilli marinated prawns served in a spicy vegetable broth. Topped with chopped green onions and lime.",
         "options": "",
-        "image":  "/assets/images/ChilliPrawn.jpg"
+        "image":  "/assets/images/dishes/ChilliPrawn.jpg"
     },
     {
         "id": 9,
@@ -78,7 +78,7 @@
         "name": "Chicken Ramen",
         "description": "Ramen noodles in chicken soup garnished with spring onions, coriander, lime, and grilled chicken",
         "options": "",
-        "image":  "/assets/images/ChickenRamen.jpg"
+        "image":  "/assets/images/dishes/ChickenRamen.jpg"
     },
     {
         "id": 10,
@@ -87,7 +87,7 @@
         "name": "Grilled Duck Ramen",
         "description": "Noodles in vegetable broth topped with red onion, green onion, coriander and pan-seared duck breast",
         "options": "",
-        "image":  "/assets/images/GrilledDuck.jpg"
+        "image":  "/assets/images/dishes/GrilledDuck.jpg"
     },
     {
         "id": 11,
@@ -96,7 +96,7 @@
         "name": "Seafood Soup",
         "description": "Vegetable broth with mixed seafood, topped with Japanese sake",
         "options": "",
-        "image":  "/assets/images/SeafoodSoup.jpg"
+        "image":  "/assets/images/dishes/SeafoodSoup.jpg"
     },
     {
         "id": 12,
@@ -105,7 +105,7 @@
         "name": "Dumpling Soup",
         "description": "Traditional Japanese dumplings filled with beef and chives served in a chicken stock , topped with green chopped onions.",
         "options": "",
-        "image":  "/assets/images/DumplingSoup.jpg"
+        "image":  "/assets/images/dishes/DumplingSoup.jpg"
     },
     {
         "id": 13,
@@ -114,7 +114,7 @@
         "name": "Ebi Fried",
         "description": "Large breaded fried shrimp served with a bowl of hakumai\/genmai rice and lemon.",
         "options": "",
-        "image":  "/assets/images/EbiFried.jpg"
+        "image":  "/assets/images/dishes/EbiFried.jpg"
     },
     {
         "id": 14,
@@ -123,7 +123,7 @@
         "name": "Grilled mixed vegetables",
         "description": "Grilled carrot, aubergine, spring onion, mushroom and sweet potato topped with butter and Japanese soya sauce.",
         "options": "",
-        "image":  "/assets/images/GrilledVeg.jpg"
+        "image":  "/assets/images/dishes/GrilledVeg.jpg"
     },
     {
         "id": 15,
@@ -132,7 +132,7 @@
         "name": "Japanese BBQ Spareribs",
         "description": "BBQ pork spareribs grilled in Japanese style, marinated in Japanese BBQ sauce. Served with mixed vegetables and apple honey sauce.",
         "options": "",
-        "image":  "/assets/images/BBQRibs.jpg"
+        "image":  "/assets/images/dishes/BBQRibs.jpg"
     },
     {
         "id": 16,
@@ -141,7 +141,7 @@
         "name": "Tofu Steak with Mushrooms",
         "description": "Tempura fried tofu marinated in soy sauce, maple syrup, sesame oil and rice vinegar. Topped with shiitake mushrooms and mushroom sauce.",
         "options": "",
-        "image":  "/assets/images/TofuSteak.jpg"
+        "image":  "/assets/images/dishes/TofuSteak.jpg"
     },
     {
         "id": 17,
@@ -150,7 +150,7 @@
         "name": "Tiger Roll",
         "description": "Avocado, shrimp, tempura, cucumber, tobiko",
         "options": "",
-        "image":  "/assets/images/TigerRoll.jpg"
+        "image":  "/assets/images/dishes/TigerRoll.jpg"
     },
     {
         "id": 18,
@@ -159,7 +159,7 @@
         "name": "Philadelphia Roll",
         "description": "Salmon, avocado, cream cheese",
         "options": "",
-        "image":  "/assets/images/PhilRoll.jpg"
+        "image":  "/assets/images/dishes/PhilRoll.jpg"
     },
     {
         "id": 19,
@@ -168,7 +168,7 @@
         "name": "Crunch Roll",
         "description": "Spicy tuna, crispy seaweed, tempura",
         "options": "",
-        "image":  "/assets/images/CrunchRoll.jpg"
+        "image":  "/assets/images/dishes/CrunchRoll.jpg"
     },
     {
         "id": 20,
@@ -177,7 +177,7 @@
         "name": "Dynamite Roll",
         "description": "Shrimp, tempura, yellowtail, bean sprouts, carrots, avocado, cucumber, chilli, spicy mayo.",
         "options": "",
-        "image":  "/assets/images/DynamiteRoll.jpg"
+        "image":  "/assets/images/dishes/DynamiteRoll.jpg"
     },
     {
         "id": 21,
@@ -186,7 +186,7 @@
         "name": "Dragon Roll",
         "description": "Eel, crab, cucumber, avocado, eel sauce",
         "options": "",
-        "image":  "/assets/images/DragonRoll.jpg"
+        "image":  "/assets/images/dishes/DragonRoll.jpg"
     },
     {
         "id": 22,
@@ -195,7 +195,7 @@
         "name": "California Roll",
         "description": "Crab, avocado, cucumber, sesame seeds",
         "options": "",
-        "image":  "/assets/images/CaliforniaRoll.jpg"
+        "image":  "/assets/images/dishes/CaliforniaRoll.jpg"
     },
     {
         "id": 23,
@@ -204,7 +204,7 @@
         "name": "Spicy Tuna Roll",
         "description": "Tuna, mayo, chilli sauce",
         "options": "",
-        "image":  "/assets/images/SpicyTuna.jpg"
+        "image":  "/assets/images/dishes/SpicyTuna.jpg"
     },
     {
         "id": 24,
@@ -213,7 +213,7 @@
         "name": "Vegetable Roll",
         "description": "Cucumber, fresh carrot, scallion, avocado, asparagus, cream cheese",
         "options": "",
-        "image":  "/assets/images/VegRoll.jpg"
+        "image":  "/assets/images/dishes/VegRoll.jpg"
     },
     {
         "id": 25,
@@ -222,7 +222,7 @@
         "name": "Tempura Roll",
         "description": "Tempura prawn, sesame seeds, cucumber",
         "options": "",
-        "image":  "/assets/images/TempuraRoll.jpg"
+        "image":  "/assets/images/dishes/TempuraRoll.jpg"
     },
     {
         "id": 26,
@@ -231,7 +231,7 @@
         "name": "Ahi",
         "description": "raw tuna",
         "options": "",
-        "image":  "/assets/images/Ahi.jpg"
+        "image":  "/assets/images/dishes/Ahi.jpg"
     },
     {
         "id": 27,
@@ -240,7 +240,7 @@
         "name": "Aji",
         "description": "Spanish mackerel",
         "options": "",
-        "image":  "/assets/images/Aji.jpg"
+        "image":  "/assets/images/dishes/Aji.jpg"
     },
     {
         "id": 28,
@@ -249,7 +249,7 @@
         "name": "Amaebi",
         "description": "Sweet shrimp",
         "options": "",
-        "image":  "/assets/images/Amaebi.jpg"
+        "image":  "/assets/images/dishes/Amaebi.jpg"
     },
     {
         "id": 29,
@@ -258,7 +258,7 @@
         "name": "Bincho",
         "description": "Albacore white tuna",
         "options": "",
-        "image":  "/assets/images/Bincho.jpg"
+        "image":  "/assets/images/dishes/Bincho.jpg"
     },
     {
         "id": 30,
@@ -267,7 +267,7 @@
         "name": "Kani",
         "description": "Cooked crab meat",
         "options": "",
-        "image":  "/assets/images/Kani.jpg"
+        "image":  "/assets/images/dishes/Kani.jpg"
     },
     {
         "id": 31,
@@ -276,7 +276,7 @@
         "name": "Saba",
         "description": "Raw mackerel",
         "options": "",
-        "image":  "/assets/images/Saba.jpg"
+        "image":  "/assets/images/dishes/Saba.jpg"
     },
     {
         "id": 32,
@@ -285,7 +285,7 @@
         "name": "Banana Sushi",
         "description": "Japanese-inspired dessert combining chocolate dipped bananas with crushed pistachios.",
         "options": "",
-        "image":  "/assets/images/BananaSushi.jpg"
+        "image":  "/assets/images/dishes/BananaSushi.jpg"
     },
     {
         "id": 33,
@@ -294,7 +294,7 @@
         "name": "Wagashi (served with green tea)",
         "description": "Traditional Japanese sweet served with a hot cup of green tea. Made of sweet azuki bean paste (anko), rice cakes (mochi), Japanese agar (kanten) or sesame paste.",
         "options": "",
-        "image":  "/assets/images/Wagashi.jpg"
+        "image":  "/assets/images/dishes/Wagashi.jpg"
     },
     {
         "id": 34,
@@ -303,7 +303,7 @@
         "name": "Namagashi",
         "description": "Rice flour and anko filling, delicately shaped by hand to represent each season of the year.",
         "options": "",
-        "image":  "/assets/images/Namagashi.jpg"
+        "image":  "/assets/images/dishes/Namagashi.jpg"
     },
     {
         "id": 35,
@@ -312,7 +312,7 @@
         "name": "Daifuku",
         "description": "A small ball of anko wrapped in mochi (soft rice cake). Covered with a dusting of potato starch.",
         "options": "Options: Strawberry, sweet beans, ice cream.",
-        "image":  "/assets/images/Daifuku.jpg"
+        "image":  "/assets/images/dishes/Daifuku.jpg"
     },
     {
         "id": 36,
@@ -321,7 +321,7 @@
         "name": "Dango",
         "description": "Steamed rice flour dumplings served skewered and topped with anko.",
         "options": "",
-        "image":  "/assets/images/Dango.jpg"
+        "image":  "/assets/images/dishes/Dango.jpg"
     },
     {
         "id": 37,
@@ -330,7 +330,7 @@
         "name": "Green Tea Cookies",
         "description": "Macha flavoured, green tea cookies loaded with white chocolate chips.",
         "options": "Gluten free",
-        "image":  "/assets/images/TeaCookies.jpg"
+        "image":  "/assets/images/dishes/TeaCookies.jpg"
     },
     {
         "id": 38,
@@ -339,7 +339,7 @@
         "name": "Green tea",
         "description": "",
         "options": "Cone, add waffle, cup",
-        "image":  "/assets/images/GreenTea.jpg"
+        "image":  "/assets/images/dishes/GreenTea.jpg"
     },
     {
         "id": 39,
@@ -348,7 +348,7 @@
         "name": "Vanilla",
         "description": "",
         "options": "Cone, add waffle, cup",
-        "image":  "/assets/images/Vanilla.jpg"
+        "image":  "/assets/images/dishes/Vanilla.jpg"
     },
     {
         "id": 40,
@@ -357,7 +357,7 @@
         "name": "Chocolate",
         "description": "",
         "options": "Cone, add waffle, cup",
-        "image":  "/assets/images/Chocolate.jpg"
+        "image":  "/assets/images/dishes/Chocolate.jpg"
     },
     {
         "id": 41,
@@ -366,6 +366,6 @@
         "name": "Strawberry",
         "description": "",
         "options": "Cone, add waffle, cup",
-        "image":  "/assets/images/Strawberry.jpg"
+        "image":  "/assets/images/dishes/Strawberry.jpg"
     }
 ]

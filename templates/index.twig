@@ -1,30 +1,94 @@
 {% extends "layouts/app.layout.twig" %}
 
 {% block main %}
+    <section class="container">
+        <div class="home-header">
+            <img src="/assets/images/food-plater.jpg" alt="Restaurant Header Image" class="home-header-image">
 
- <img src="main_page_image.jpg" alt="Main page image"> 
+            <div class="home-header-side">
+                <h1 class="page-title">Restaurant</h1>
+                <p>Japanese Restaurant</p>
 
-<h1>Restaurant</h1>
-<p>Japanese Restaurant</p>
+                <div style="display:flex;gap: 1rem">
+                    <a href="/menu.php" class="btn btn-primary">See the menu</a>
+                    <a href="#" class="btn btn-secondary">Book a table</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
- <button type="button">See the menu</button> 
- <button type="button">Book a table</button> 
+    <section>
+        <img src="/assets/images/header.jpg" alt="Photo of dishes">
+    </section>
 
- <img src="dishes_strip.jpg" alt="Photo of dishes"> 
+    <section class="container" style="margin: 5rem 0;">
+        <div class="page-title" style="text-align: center">Menu</div>
+        <div class="category-tabs">
+            <a href="/menu.php" class="category-tab">
+                All
+            </a>
+            {% for category in __menuCategories %}
+                <a href="/menu.php?category={{ category.name }}" class="category-tab">
+                    {{ category.name }}
+                </a>
+            {% endfor %}
+        </div>
+    </section>
 
- <img src="about_us" alt="About us dish"> 
+    <section class="section">
+        <div class="container">
+            <div class="page-title" style="text-align: center">
+                About us
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem">
+                <div>
+                    <img src="/assets/images/about_us.jpg" alt="About us dish">
+                </div>
+                <div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid delectus
+                    deleniti dolore incidunt quis sequi, suscipit tempore unde voluptates. Culpa
+                    deserunt doloribus esse in officia, quia sapiente! Dolor, placeat?
+                </div>
+            </div>
+        </div>
+    </section>
 
- <p>About us</p>
- <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a est ac sem egestas mattis. 
- Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
- Nulla eget lectus vel elit semper varius sit amet sollicitudin libero.</li>
+    <section style="padding: 5rem 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="page-title">Opening hours</div>
+                    <ul>
+                        <li> <span class="bolded">Mon - Fri: </span> 8:00am - 9:00pm </li>
+                        <li> <span class="bolded">Sat - Sun: </span> 8:00am - 11:00pm </li>
+                        <li> <span class="bolded">Call us: </span> + 1 (650) 513 0514 or book a table using form</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <div class="page-title">Create reservation</div>
+                    <form method="post">
+                        <div class="form-input">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Full Name" required>
+                        </div>
 
-<p>Opening hours</p>
- <li> <span class="bolded">Mon - Fri: </span> 8:00am - 9:00pm </li>
- <li> <span class="bolded">Sat - Sun: </span> 8:00am - 11:00pm </li>
+                        <div class="form-input">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                        </div>
 
- <li> <span class="bolded">Call us: </span> + 1 (650) 513 0514 or book a table using form</li>
+                        <div class="form-input">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Phone" required>
+                        </div>
 
-
-
+                        <div class="form-input">
+                            <label for="date">Phone</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

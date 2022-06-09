@@ -1,39 +1,43 @@
 <?php
 
+use App\Database;
+
 include_once __DIR__."/app/bootstrap.php";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // save the id of dish into cookies
-    // redirect to the same page but with get request
-}
-
-$food = [];
+$menu = [];
 
 if (isset($_GET['category'])) {
-    foreach (App\Database::table('categories')->get() as $category) {
-        if ($category->name !== $_GET['category']) {
+    foreach (Database::table('categories')->get() as $category) {
+        if (strtolower($category->name) !== strtolower($_GET['category'])) {
             continue;
         }
 
-        $dishes = \App\Database::table('dishes')
+        $dishes = Database::table('dishes')
             ->where('category_id', '==', $category->id)
             ->get();
 
-        $food[] = [
+        $menu[] = [
             'category' => $category,
             'dishes' => $dishes,
         ];
+
+        break;
+    }
+
+    if (empty($menu)) {
+        exit($twig->render('404.twig'));
     }
 } else {
-    foreach (App\Database::table('categories')->get() as $category) {
-        $dishes = \App\Database::table('dishes')
+    foreach (Database::table('categories')->get() as $category) {
+        $dishes = Database::table('dishes')
             ->where('category_id', '==', $category->id)
             ->get();
 
-        $food[] = [
+        $menu[] = [
             'category' => $category,
             'dishes' => $dishes,
         ];
     }
 }
-echo $twig->render('menu.twig', ['food' => $food]);
+
+echo $twig->render('menu.twig', ['menu' => $menu]);

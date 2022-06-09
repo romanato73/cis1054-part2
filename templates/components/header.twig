@@ -5,9 +5,8 @@
             Restaurant
         </a>
         <div class="nav">
-            {% for category in __menuCategories %}
-                <a href="/menu.php?category={{ category.name }}" class="nav-link">{{ category.name }}</a>
-            {% endfor %}
+            <a href="/" class="nav-link">Home</a>
+            <a href="/menu.php" class="nav-link">Menu</a>
             <a href="/favourites.php" class="nav-link">
                 <i class="far fa-heart"></i>
             </a>

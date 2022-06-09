@@ -1,49 +1,39 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-
 require_once __DIR__ . "/app/bootstrap.php";
 
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    if (empty($_POST['email']) || empty($_POST['full_name'])) {
+        exit('Email and Name are required');
+    }
 
-$mail = new PHPMailer();
-$mail->isSMTP();
+    $email = clean_input($_POST['email']);
+    $full_name = clean_input($_POST['full_name']);
 
-$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        exit("Invalid email");
+    }
 
-//Set the hostname of the mail server
-$mail->Host = 'smtp.gmail.com';
+    $to = $email;
+    $subject = "Restaurant - Favourite list";
 
-//Set the SMTP port number:
-$mail->Port = 465;
+    $message = file_get_contents(\App\FavouriteList::generateFile());
 
-//Set the encryption mechanism to use:
-$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    $header = "From:restaurant@localhost \r\n";
+    $header .= "MIME-Version: 1.0\r\n";
+    $header .= "Content-type: text/html\r\n";
 
-//Whether to use SMTP authentication
-$mail->SMTPAuth = true;
+    $retVal = mail($to,$subject,$message,$header);
 
-//Username to use for SMTP authentication - use full email address for gmail
-$mail->Username = 'restaurantcis1054@gmail.com';
+    if($retVal === true) {
+        $msg = "Favourite list sent successfully...<br>";
+        $msg .= "<a href='/'>Return home</a>";
+        exit($msg);
+    }
 
-//Password to use for SMTP authentication
-$mail->Password = 'CIS1054!@';
-
-//Set who the message is to be sent from
-$mail->setFrom('restaurantcis1054@gmail.com', 'Restaurant');
-//Set who the message is to be sent to
-$mail->addAddress($_POST['email'], $_POST['name']);
-//Set the subject line
-$mail->Subject = 'Favourites List';
-
-//Read an HTML message body from an external file, convert referenced images to embedded,
-//convert HTML into a basic plain-text alternative body
-$mail->msgHTML(file_get_contents('contents.html'), __DIR__);
-
-//send the message, check for errors
-if (!$mail->send()) {
-    echo 'Oh no! We have an error: ' . $mail->ErrorInfo;
-} else {
-    echo 'Check your mail box!';
+    $msg = "Message could not be sent...<br>";
+    $msg .= "<a href='/'>Return home</a>";
+    exit($msg);
 }
-?>
+
+exit($twig->render('404.twig'));

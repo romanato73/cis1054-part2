@@ -1,44 +1,66 @@
 {% extends "layouts/app.layout.twig" %}
 
 {% block main %}
-    {% if favourites|length > 0 %}
-        {% for favourite in favourites %}
-            <div>
-                <div class="category">
-                    <h1 class="category-title">{{ favourite.category.name }}</h1>
-                    {% if favourite.category.description %}
-                        <div class="category-description">{{ favourite.category.description }}</div>
-                    {% endif %}
+    <div class="container">
+        {% if favourites|length > 0 %}
+            <form method="post" action="/sendfavourites.php" class="form-flex">
+                <h3>Send your list to an email:</h3>
+                <div class="form-input">
+                    <label for="full_name">Full Name:</label>
+                    <input type="text" name="full_name" id="full_name" placeholder="Enter your name..." required>
                 </div>
+                <div class="form-input">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email..." required>
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
 
-                <div class="dishes">
-                    {% for dish in favourite.dishes %}
-                        <a href="/details.php?dish={{ dish.id }}" class="dish dish-link">
-                            <div class="dish-header">
-                                <div class="dish-name">{{ dish.name }}</div>
-                            </div>
-                            <div class="dish-body">
-                                <div class="dish-description">
-                                    {{
-                                    dish.description|length > 30
-                                    ? dish.description|slice(0, 30)|trim() ~ "..."
-                                    : dish.description
-                                    }}
+            {% for favourite in favourites %}
+                <div>
+                    <div class="category">
+                        <h1 class="category-title">{{ favourite.category.name }}</h1>
+                        {% if favourite.category.description %}
+                            <div class="category-description">{{ favourite.category.description }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="dishes">
+                        {% for dish in favourite.dishes %}
+                            <a href="/details.php?dish={{ dish.id }}" class="dish">
+                                <div class="dish-image">
+                                    <img src="{{ dish.image }}" alt="{{ dish.name }}">
                                 </div>
-                                <form method="post">
-                                    <button type="submit" class="dish-favorite fav">
-                                        <i class="fas fa-heart fa-lg"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </a>
-                    {% endfor %}
+                                <div>
+                                    <div class="dish-info">
+                                        <div class="dish-name">
+                                            {{ dish.name }}
+                                        </div>
+                                        <form action="/favourites.php" method="post" style="display:inline;">
+                                            <input type="hidden" name="dish_id" value="{{ dish.id }}">
+                                            <input type="hidden" name="from" value="favourites">
+                                            <button type="submit" class="favourite-btn {{ dish.id in __favourites ? "in-list" : "" }}">
+                                                <i class="far fa-heart"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="dish-description">
+                                        {{
+                                        dish.description|length > 30
+                                        ? dish.description|slice(0, 30)|trim() ~ "..."
+                                        : dish.description
+                                        }}
+                                    </div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
                 </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert">
+                You do not have any favourite dishes.
             </div>
-        {% endfor %}
-    {% else %}
-        <div class="alert">
-            You do not have any favourite dishes.
-        </div>
-    {% endif %}
+        {% endif %}
+    </div>
 {% endblock %}
