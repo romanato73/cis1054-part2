@@ -12,3 +12,5 @@ composer.lock
 # Other
 storage/cache/templates/*
 !storage/cache/templates/.gitkeep
+storage/cache/favourites/*
+!storage/cache/templates/.gitkeep
