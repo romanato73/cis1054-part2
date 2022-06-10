@@ -63,6 +63,12 @@ class FavouriteList
         return isset($_COOKIE[self::$name]) ? json_decode($_COOKIE[self::$name], true) : [];
     }
 
+    /**
+     * Check if list contains dishId.
+     *
+     * @param  string  $dishId
+     * @return bool
+     */
     public static function has(string $dishId): bool
     {
         $storage = self::get();
@@ -76,6 +82,12 @@ class FavouriteList
         return false;
     }
 
+    /**
+     * Store dishId into storage.
+     *
+     * @param  int  $dishId
+     * @return void
+     */
     public static function store(int $dishId): void
     {
         $storage = self::get();
@@ -116,6 +128,12 @@ class FavouriteList
         setcookie(self::$name, json_encode($storage), time() + (86400 * 30));
     }
 
+    /**
+     * Generates URI and append the path.
+     *
+     * @param  string  $append
+     * @return string
+     */
     private static function generateUri(string $append): string
     {
         $uri = "http://";

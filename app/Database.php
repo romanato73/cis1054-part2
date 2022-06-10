@@ -15,11 +15,6 @@ class Database
     private static array $query = [];
 
     /**
-     * @var array Relationship tables.
-     */
-    private static array $relationship = [];
-
-    /**
      * Load the table (file) into variable.
      *
      * @param string $name
@@ -48,27 +43,6 @@ class Database
             if (!$this->compare($row->$column, $value, $operator)) {
                 unset(self::$query[$key]);
             }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Add relationship to data.
-     *
-     * @param  string  $table
-     * @param  string  $foreignKey
-     * @return $this
-     */
-    public function with(string $table, string $foreignKey): static
-    {
-        $relationship = self::relationship($table);
-        $relationshipKey = substr($foreignKey, 0, strpos($foreignKey, '_id'));
-
-        foreach (self::$query as $key => $row) {
-            $temp = clone $row;
-            $temp->$relationshipKey = $relationship[$table][$row->$foreignKey];
-            self::$query[$key] = $temp;
         }
 
         return $this;
@@ -128,27 +102,6 @@ class Database
             '!==' => $val1 !== $val2,
             default => false,
         };
-    }
-
-    /**
-     * Load relationship tables.
-     *
-     * @param  string  ...$tables
-     * @return array
-     */
-    private static function relationship(string ...$tables): array
-    {
-        foreach ($tables as $table) {
-            self::$relationship[$table] = [];
-
-            $temp = self::loadFile($table);
-
-            foreach ($temp as $row) {
-                self::$relationship[$table][$row->id] = $row;
-            }
-        }
-
-        return self::$relationship;
     }
 
     /**
