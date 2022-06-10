@@ -6,19 +6,26 @@ if (php_sapi_name() !== "cli") {
 
 if ($argc === 2 && $argv[1] === "clear-cache") {
     $paths = [
-        __DIR__ . "/storage/cache/favourites",
-        __DIR__ . "/storage/cache/templates",
+        __DIR__ . "/storage/cache/favourites/",
+        __DIR__ . "/storage/cache/templates/",
     ];
 
     echo "Clearing cache...".PHP_EOL;
 
     foreach ($paths as $path) {
-        $files = glob($path . "/*.{php,html}", GLOB_BRACE);
-        echo "Directory: $path".PHP_EOL;
-        foreach($files as $file){
-            if(is_file($file)) {
+        $it = new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS);
+
+        echo "Checking directory: $path".PHP_EOL;
+
+        $files = new RecursiveIteratorIterator($it, RecursiveIteratorIterator::CHILD_FIRST);
+
+        foreach ($files as $file) {
+            if ($file->isFile() && basename($file) !== ".gitkeep") {
                 echo "Deleting file: ".basename($file).PHP_EOL;
-                unlink($file);
+                unlink($file->getRealPath());
+            } else if ($file->isDir()) {
+                echo "Deleting directory: ".basename($file).PHP_EOL;
+                rmdir($file->getRealPath());
             }
         }
     }
