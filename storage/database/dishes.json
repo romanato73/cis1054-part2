@@ -51,7 +51,7 @@
         "name": "Tsukemono",
         "description": "An assortment of pickled vegetables served as a side dish gently complimenting a bowl of Gohan (rice).",
         "options": "Options: Daikon (Japanese Radish), cucumber, eggplant, cabbage, water lily root, umeboshi (plum), carrot and shallots.",
-        "image":  "/assets/images/dishes/Yakizakana.jpg"
+        "image":  "/assets/images/dishes/Tsukemono.jpg"
     },
     {
         "id": 7,
